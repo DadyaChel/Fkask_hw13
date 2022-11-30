@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>eto Dadya</h1>
+<p>
+  <a class="btn btn-primary" href="{{ url_for('transactions_create') }}">Создать нового Transactions</a>
+</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">period</th>
+      <th scope="col">value</th>
+      <th scope="col">status</th>
+      <th scope="col">unit</th>
+      <th scope="col">subject</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for transactions in transaction %}
+    <tr>
+      <th scope="row">{{ transactions.id }}</th>
+      <td>{{ transactions.period }}</td>
+      <td>{{ transactions.value }}</td>
+      <td>{{ transactions.status }}</td>
+      <td>{{ transactions.unit }}</td>
+      <td>{{ transactions.subject }}</td>
+      <td>
+        <a class="btn btn-outline" href="{{ url_for('transactions_detail', id=transactions.id) }}">хотити больше?</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}
